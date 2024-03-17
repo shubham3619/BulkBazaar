@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet id="20240317-01" author="rishis">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<columnExists tableName="users" columnName="valid_otp" />
+				<and>
+					<columnExists tableName="users" columnName="valid_otp_time" />
+				</and>
+			</not>
+		</preConditions>
+		<addColumn tableName="users">
+			<column name="valid_otp" type="varchar(10)"></column>
+			<column name="valid_otp_time" type="date"></column>
+		</addColumn>
+	</changeSet>
+</databaseChangeLog>

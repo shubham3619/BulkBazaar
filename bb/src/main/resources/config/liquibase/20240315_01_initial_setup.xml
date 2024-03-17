@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet id="20240315-01" author="rishis">
+		<createSequence startValue="1" sequenceName="user_id_seq" incrementBy="1" maxValue="9999999999" />
+		<createSequence startValue="1" sequenceName="business_id_seq" incrementBy="1" maxValue="9999999999" />
+		<createSequence startValue="1" sequenceName="stock_id_seq" incrementBy="1" maxValue="9999999999" />
+
+		<createTable tableName="users">
+			<column name="id" type="bigint" defaultValueSequenceNext="user_id_seq">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="username" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="first_name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="middle_name" type="varchar(50)"> 	</column>
+			<column name="password" type="varchar(100)"> </column>
+			<column name="email" type="varchar(100)"> </column>
+			<column name="phone" type="bigint"> </column>
+			<column name="gender" type="int"> </column>
+			
+			<column name="effective_date" type="date">
+				<constraints nullable="false" />
+			</column>
+			<column name="end_date" type="date" />
+			<column name="is_deleted" type="boolean" defaultValueBoolean="false" />
+			<column name="created_by" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_datetime" type="datetime">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_updated_by" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_updated_datetime" type="datetime">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+
+		<createTable tableName="business">
+			<column name="id" type="bigint" defaultValueSequenceNext="business_id_seq"> 
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(500)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type" type="bigint">
+				<constraints nullable="false" />
+			</column>
+			<column name="website" type="bigint"> </column>
+			<column name="email" type="bigint"> </column>
+			<column name="phone" type="varchar(500)"> </column>
+			<column name="gst_no" type="bigint">
+				<constraints nullable="false" />
+			</column>
+			<column name="address_line_1" type="bigint">  
+				<constraints nullable="false" />
+			</column>
+			<column name="address_line_2" type="bigint">  </column>
+			<column name="city" type="bigint"> 
+				<constraints nullable="false" />
+			</column>
+			<column name="state" type="bigint"> 
+				<constraints nullable="false" />
+			</column>
+			<column name="country" type="bigint">
+				<constraints nullable="false" />
+			 </column>
+			<column name="pin_code" type="bigint"> 
+				<constraints nullable="false" />
+			</column>
+			<column name="user_id" type="bigint"> 
+				<constraints nullable="false" />
+			</column>
+
+			<column name="end_date" type="date" />
+			<column name="effective_date" type="date">
+				<constraints nullable="false" />
+			</column>
+			<column name="is_deleted" type="boolean" defaultValueBoolean="false" />
+			<column name="created_by" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_datetime" type="datetime">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_updated_by" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_updated_datetime" type="datetime">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+
+		<createTable tableName="stock">
+			<column name="id" type="bigint"
+				defaultValueSequenceNext="stock_id_seq">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(500)">
+				<constraints nullable="false" />
+			</column>
+			<column name="unit" type="bigint">
+				<constraints nullable="false" />
+			</column>
+			<column name="price" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+			<column name="delivery_time" type="bigint"> </column>
+			<column name="purchased_from_id" type="bigint"> </column>
+			<column name="purchased_from_name" type="varchar(500)"> </column>
+			<column name="remarks" type="varchar(500)"> </column>
+
+			<column name="end_date" type="date" />
+			<column name="effective_date" type="date">
+				<constraints nullable="false" />
+			</column>
+			<column name="is_deleted" type="boolean" defaultValueBoolean="false" />
+			<column name="created_by" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_datetime" type="datetime">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_updated_by" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_updated_datetime" type="datetime">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+	</changeSet>
+</databaseChangeLog>
